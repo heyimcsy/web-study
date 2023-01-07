@@ -1,27 +1,71 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>투두리스트</h1>
-        <h2>투두리스트</h2>
-        <h6>투두리스트</h6>
-        <div>영역</div>
-        <br/><br/>
-        <hr/>
-        <div>영역2</div>
-        <p>긴 문장을 쓸 때 ~~</p>
-        <p>긴 <span style="color:blueviolet">문장</span>을 쓸 때 ~~</p>
-        <ul>
-            <li>1</li>
-            <li>2</li>
-        </ul>
-        <input type="button" />
-        <input type="number" />
-        <button>눌러봐</button>
-        <img src=">">
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./main.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Kirang+Haerang&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container"  id="container">
+        <h3 id="title">정말 간단 TODO 리스트</h3>
+        <div id="sub-container">
+            <ul class="list-group" id="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center" id="list-group-item">
+                  오늘의 할 일 목록 하나!
+                  <span class="badge badge-primary badge-pill"
+                  id="button-delete"onclick="deleteTodo()">삭제
+                </span>
+                </li>
+              </ul>
+        </div>
+        <div class="input-group mb-3" id="input-group">
+            <input type="text" class="form-control" id="input-area">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button"
+              id="button-area"onclick="addTodo()">추가</button>
+            </div>
+          </div>
+          
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <script>
+        function addTodo(){
+            let todo = $("#input-area").val();
+            console.log(todo);
+            let id = Math.floor(Math.random() * 100000)
+            console.log(id)
+            let list_item = `<li class=
+            "list-group-item d-flex justify-content-between align-items-center list-${id}" 
+            id="list-group-item">
+                  ${todo}
+                  <span class="badge badge-primary badge-pill"
+                  id="button-delete"onclick="deleteTodo(${id})">삭제
+                </span>
+                </li>`
+
+                $("#list-group").append(list_item)
+                $("#input-area").val('')
+        }
+
+        function deleteTodo(id){
+            $(".list-"+id).remove()
+        }
+ 
+
+    </script>
+
+</body>
 </html>
